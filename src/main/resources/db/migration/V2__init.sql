@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS categories
+CREATE TABLE IF NOT EXISTS categories -- +
 (
     id          BIGSERIAL PRIMARY KEY,
     title       VARCHAR(255) NOT NULL UNIQUE,
@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS categories
     parent_id   BIGINT REFERENCES categories (id)
     );
 
-CREATE TABLE IF NOT EXISTS attributes
+CREATE TABLE IF NOT EXISTS attributes -- +
 (
     id    BIGSERIAL PRIMARY KEY,
     title VARCHAR(255) NOT NULL
@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS attribute_values
     attribute_id BIGINT REFERENCES attributes (id)
     );
 
-CREATE TABLE IF NOT EXISTS products
+CREATE TABLE IF NOT EXISTS products -- +
 (
     id          BIGSERIAL PRIMARY KEY,
     title       VARCHAR(255) NOT NULL,
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS product_attributes
     CONSTRAINT product_attributes_unique UNIQUE (product_id, attribute_value_id)
     );
 
-CREATE TABLE IF NOT EXISTS orders
+CREATE TABLE IF NOT EXISTS orders -- +
 (
     id              BIGSERIAL PRIMARY KEY,
     customer_id     BIGINT REFERENCES users (id),
@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS orders
     details         TEXT
     );
 
-CREATE TABLE IF NOT EXISTS order_items
+CREATE TABLE IF NOT EXISTS order_items -- +
 (
     id         BIGSERIAL PRIMARY KEY,
     order_id  BIGINT REFERENCES orders (id),
@@ -60,18 +60,18 @@ CREATE TABLE IF NOT EXISTS order_items
     quantity   INTEGER
     );
 
-CREATE TABLE IF NOT EXISTS customer_addresses
+CREATE TABLE IF NOT EXISTS customer_addresses -- +
 (
     id          BIGSERIAL PRIMARY KEY,
     address     TEXT NOT NULL,
     customer_id BIGINT REFERENCES users (id)
     );
 
-INSERT INTO categories (title)
+INSERT INTO categories (title) -- +
 VALUES ('Электроника'),
        ('Бытовая техника');
 
-INSERT INTO products(title, price, category_id)
+INSERT INTO products(title, price, category_id) -- +
 VALUES ('Ноутбук Lenovo', 44990, 1),
        ('Телефон iPhone', 66490, 1),
        ('Стиральная машинка LG', 32290, 2),

@@ -1,6 +1,5 @@
 package ru.gb.springbootdemoapp.model;
 
-import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,32 +7,30 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name="categories")
+@Table(name="order_items")
 @Data
-public class Category {
+public class OrderItem {
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column
   private Long id;
 
-  @Column(name = "title")
-  private String title;
+  @Column(name = "price")
+  private Float price;
 
-  @Column(name = "description")
-  private String description;
-
-  @Column(name = "image_url")
-  private String imageUrl;
+  @Column(name = "quantity")
+  private Integer quantity;
 
   @ManyToOne
-  @JoinColumn(name = "parent_id")
-  private Category category;
+  @JoinColumn(name = "product_id")
+  private Product product;
 
-  @OneToMany(mappedBy = "category")
-  private List<Product> products;
+  @ManyToOne
+  @JoinColumn(name = "order_id")
+  private Order order;
 }
