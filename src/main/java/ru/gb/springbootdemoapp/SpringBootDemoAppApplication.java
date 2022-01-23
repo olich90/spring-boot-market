@@ -6,7 +6,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @OpenAPIDefinition
-//hw12 заглушка
 public class SpringBootDemoAppApplication {
 
 	public static void main(String[] args) {
