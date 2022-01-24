@@ -30,6 +30,27 @@ CREATE TABLE IF NOT EXISTS products
     category_id BIGINT REFERENCES categories (id)
     );
 
+CREATE TABLE IF NOT EXISTS product_feedback
+(
+    id         BIGSERIAL PRIMARY KEY,
+    product_id BIGINT REFERENCES products (id),
+    feedback   VARCHAR(MAX) NOT NULL
+    );
+
+CREATE TABLE IF NOT EXISTS product_rate
+(
+    id         BIGSERIAL PRIMARY KEY,
+    product_id BIGINT REFERENCES products (id),
+    rate       int NOT NULL
+    );
+
+CREATE TABLE IF NOT EXISTS product_favourite
+(
+    id          BIGSERIAL PRIMARY KEY,
+    customer_id BIGINT REFERENCES users (id),
+    product_id  BIGINT REFERENCES products (id)
+    );
+
 CREATE TABLE IF NOT EXISTS product_attributes
 (
     product_id         BIGINT REFERENCES products (id),
