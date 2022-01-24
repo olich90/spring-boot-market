@@ -40,7 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
           .logout()
           .logoutSuccessUrl("/");
 
-    // для консольи h2 - так не делают в продакшене
+    // для консоли h2 - так не делают в продакшене
     http.csrf().disable()
         .headers().frameOptions().disable();
   }
