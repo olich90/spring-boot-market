@@ -34,9 +34,4 @@ public class ProductController {
     model.addAttribute("product", productMapper.productToProductDto(productService.findById(id).orElse(null)));
     return "product_info";
   }
-
-  @GetMapping("/about")
-  public String getAboutPage() {
-    return "about";
-  }
 }
